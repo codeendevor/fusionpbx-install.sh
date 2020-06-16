@@ -1,7 +1,7 @@
 
 # FusionPBX Settings
-domain_name=ip_address          # hostname, ip_address or a custom value
-system_username=admin           # default username admin
+domain_name=hostname            # hostname, ip_address or a custom value
+system_username=sysAdmin        # default username admin
 system_password=random          # random or a custom value
 system_branch=master            # master, stable
 

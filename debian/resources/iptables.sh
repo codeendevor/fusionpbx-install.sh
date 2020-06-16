@@ -34,12 +34,32 @@ iptables -A INPUT -j DROP -p udp --dport 5060:5091 -m string --string "exec." --
 iptables -A INPUT -j DROP -p tcp --dport 5060:5091 -m string --string "exec." --algo bm --icase
 iptables -A INPUT -j DROP -p udp --dport 5060:5091 -m string --string "multipart/mixed;boundary" --algo bm --icase
 iptables -A INPUT -j DROP -p tcp --dport 5060:5091 -m string --string "multipart/mixed;boundary" --algo bm --icase
+iptables -A INPUT -p tcp --dport 2410 -j ACCEPT
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp --dport 7443 -j ACCEPT
+#Twilio Inbound access
+iptables -A INPUT -p tcp --dport 5060:5064 -s 35.156.191.128/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 35.156.191.128/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.65.63.192/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.65.63.192/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.169.127.128/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.169.127.128/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.252.254.64/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.252.254.64/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 177.71.206.192/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 177.71.206.192/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.172.60.0/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.172.60.0/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.244.51.0/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.244.51.0/30 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5060:5064 -s 54.171.127.192/30 -j ACCEPT
+iptables -A INPUT -p udp --dport 5060:5064 -s 54.171.127.192/30 -j ACCEPT
+
 iptables -A INPUT -p tcp --dport 5060:5091 -j ACCEPT
 iptables -A INPUT -p udp --dport 5060:5091 -j ACCEPT
+#Open 15000 media ports for communication, Smaller phone systems only need 2000 to 4000
 iptables -A INPUT -p udp --dport 16384:32768 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 iptables -A INPUT -p udp --dport 1194 -j ACCEPT

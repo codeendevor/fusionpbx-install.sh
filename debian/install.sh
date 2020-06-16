@@ -11,6 +11,7 @@ cd "$(dirname "$0")"
 # removes the cd img from the /etc/apt/sources.list file (not needed after base install)
 sed -i '/cdrom:/d' /etc/apt/sources.list
 
+
 #Update to latest packages
 verbose "Update installed packages"
 apt-get update && apt-get upgrade -y
